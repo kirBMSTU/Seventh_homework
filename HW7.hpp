@@ -2,11 +2,12 @@
 #include <string.h>
 #include <fstream>
 
-template<T = int> class Queue
+template<class T>
+class Queue
 {
 public:
   Queue();
-  Queue(const Queue<T> &other);
+  Queue(const Queue &other);
   Queue(const T& first);
   void Enqueue(const T& last);
   T Dequeue();
@@ -16,7 +17,9 @@ public:
   const Queue& operator + (const Queue& other) const;
   const Queue& operator - (const Queue& other) const;
   const Queue& operator = (const Queue& other) const;
-  friend std::ostream& operator << (std::ostream& out, const Queue& other) const;
+
+  template<T>
+  friend std::ostream& operator << (std::ostream& out, const Queue& other);
 
   ~Queue();
 private:

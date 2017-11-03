@@ -15,7 +15,8 @@
                                                  // то есть размер массива не изменился,
                                                  // произошло лишь смещение
 
-Queue:: Queue()
+template<class T>
+Queue<T>:: Queue()
 {
   this->capacity = 0;
   this->size = 0;
@@ -23,7 +24,8 @@ Queue:: Queue()
   this->tail = 0;
 }
 
-Queue:: Queue(const Queue<T> &other)
+template<class T>
+Queue<T>:: Queue(const Queue &other)
 {
   //delete [] this->array;
   this->capacity = other.capacity;
@@ -34,7 +36,8 @@ Queue:: Queue(const Queue<T> &other)
   this->tail = other.tail;
 }
 
-Queue:: Queue(const T& first)
+template<class T>
+Queue<T>:: Queue(const T& first)
 {
   this->size = 0;
   this->capacity = 0;
@@ -43,29 +46,29 @@ Queue:: Queue(const T& first)
   Enqueue(first);
 }
 
-void Queue:: Enqueue(const T& last)
+template<class T>
+void Queue<T>:: Enqueue(const T& last)
 {
   this->size++;
   this->allocate_new_array();
-  if (this->tail == this->capacity - 1)
-  else if
-    this->tail++;
-  array[tail] = last;
+  array[this->tail] = last;
 }
 
-T Queue:: Dequeue()
+template<class T>
+T Queue<T>:: Dequeue()
 {
   this->head++;
   this->size--;
   return array[this->head - 1];//не ошибка
 }
 
-void Queue:: allocate_new_array()
+template<class T>
+void Queue<T>:: allocate_new_array()
 {
   if(this->capacity == 0)
   {
     this->capacity = 4;
-    this->array = new T[this->capacity]
+    this->array = new T[this->capacity];
     return;
   }
   if (this->tail + this->size >= this->capacity - 1)
@@ -93,17 +96,20 @@ void Queue:: allocate_new_array()
   }
 }
 
-T Queue:: Peek()
+template<class T>
+T Queue<T>:: Peek()
 {
   return array[this->head];//и тут тоже не ошибка
 }
 
-size_t Queue:: Count()
+template<class T>
+size_t Queue<T>:: Count()
 {
   return this->size;
 }
 
-Queue:: ~Queue()
+template<class T>
+Queue<T>:: ~Queue<T>()
 {
   std:: cout << "~Queue\n";
   delete [] this->array;
@@ -113,7 +119,8 @@ Queue:: ~Queue()
   this->tail = 0;
 }
 
-const Queue& operator + (const Queue& other) const
+template<class T>
+const Queue<T>& Queue<T>::operator + (const Queue<T>& other) const
 {
   size_t prev = this->size;
   this->size += other.size;
@@ -123,12 +130,14 @@ const Queue& operator + (const Queue& other) const
   return *this;
 }
 
-const Queue& operator - (const Queue& other) const
+template<class T>
+const Queue<T>& Queue<T>::operator - (const Queue<T>& other) const
 {
   return *this;
 }
 
-const Queue& operator = (const Queue& other) const
+template<class T>
+const Queue<T>& Queue<T>::operator = (const Queue<T>& other) const
 {
   this->head = other.head;
   this->tail = other.tail;
@@ -140,11 +149,12 @@ const Queue& operator = (const Queue& other) const
   return *this;
 }
 
-friend std::ostream& operator << (std::ostream& out, const Queue& other) const
+template<class T>
+std::ostream& operator << (std::ostream& out, const Queue<T>& other)
 {
   out << "[";
   for (size_t i = other.head; i < other.tail; i++) {
-    out << other.array[i] << " "
+    out << other.array[i] << " ";
   }
   out << "]\n";
   return out;
