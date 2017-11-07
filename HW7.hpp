@@ -42,7 +42,6 @@ const Queue<T> operator + (const Queue<T>& left, const Queue<T>& right)
   Queue<T> result = Queue<T>(left);
   result.size += right.size;
   result.allocate_new_array();
-  //memcpy(result.array, &(left.array[left.head]), sizeof(T) * left.size);
   memcpy(&(result.array[result.head + left.size]), &(right.array[right.head]), sizeof(T) * right.size);
   return result;
 }
@@ -129,8 +128,6 @@ private:
   void allocate_new_array();
 };
 
-//TODO: специализация класса
-
 template<class T>
 Queue<T>:: Queue()
 {
@@ -141,7 +138,6 @@ Queue<T>:: Queue()
   this->tail = 0;
   this->allocate_new_array();
 }
-
 
 template<class T>
 Queue<T>:: Queue(const Queue &other)

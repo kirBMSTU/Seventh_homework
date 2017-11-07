@@ -10,7 +10,7 @@ int main()
     size_t queue_size = 3 + rand() % 10;
     for (size_t j = 0; j < queue_size; j++)
     {
-        array_of_queue[i].Enqueue(-50 + rand() % 100);
+        array_of_queue[i].Enqueue(-50.4 + rand() % 100);
     }
   }
 
@@ -22,16 +22,81 @@ int main()
   std :: cout << "kick_uneven() for everyone in arr\n";
   for (size_t i = 0; i < size; i++)
   {
-
     kick_uneven<>(array_of_queue[i]);
   }
 
   for (size_t i = 0; i < size; i++)
   {
-    std:: cout << "arr[" << i << "] = "<< array_of_queue[i];
+    std:: cout << "arr[" << i << "] = " << array_of_queue[i];
   }
 
+
+
+
+
   delete [] array_of_queue;
+
+  //аналогичный пример для char*
+  // size_t size = 5;
+  // Queue<char*> *array_of_queue = new Queue<char*>[size];
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   size_t queue_size = 3 + rand() % 10;
+  //   for (size_t j = 0; j < queue_size; j++)
+  //   {
+  //       array_of_queue[i].Enqueue("тест-слово\0");
+  //   }
+  // }
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   std:: cout << "arr[" << i << "] = "<< array_of_queue[i];
+  // }
+  //
+  // std :: cout << "kick_uneven() for everyone in arr\n";
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   kick_uneven<char*>(array_of_queue[i]);
+  // }
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   std:: cout << "arr[" << i << "] = "<< array_of_queue[i];
+  // }
+  //
+  // delete [] array_of_queue;
+
+  //аналогичный пример с double
+  // size_t size = 5;
+  // Queue<double> *array_of_queue = new Queue<double>[size];
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   size_t queue_size = 3 + rand() % 10;
+  //   for (size_t j = 0; j < queue_size; j++)
+  //   {
+  //       array_of_queue[i].Enqueue(-50.4 + rand() % 100);
+  //   }
+  // }
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   std:: cout << "arr[" << i << "] = "<< array_of_queue[i];
+  // }
+  //
+  // std :: cout << "kick_uneven() for everyone in arr\n";
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   kick_uneven<double>(array_of_queue[i]);
+  // }
+  //
+  // for (size_t i = 0; i < size; i++)
+  // {
+  //   std:: cout << "arr[" << i << "] = "<< array_of_queue[i];
+  // }
+  //
+  // delete [] array_of_queue;
 
   //старый пример, демонстрирующий работу +, - и =
   // Queue<int> alpha = Queue<int>();
